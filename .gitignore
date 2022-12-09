@@ -1,0 +1,28 @@
+# Project subjects, corrections and other stuff
+correc.*
+*.pdf
+*.zip
+*.tar
+*.gif
+
+# object files, link files and libraries
+*.o
+*.d
+*.a
+
+# Executables
+*.out
+*.exe
+*.exe.stackdump
+*.dSYM
+*/main
+*/fdf
+*/fractol
+*/rtv1
+*/rt
+
+# Macintosh files
+*.DS_Store
+*._*
+
+env

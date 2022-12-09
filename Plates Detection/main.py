@@ -1,15 +1,19 @@
+# importing Open-cv
 import cv2
 from matplotlib import pyplot as plt
 import numpy as np
+# imutils to make basic image processing functions such as translation, rotation, resizing
 import imutils
 import os
+# easyocr to read text from pictures
 import easyocr
 
+# we make the file working directory
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
+
+# Defining  Marr Hildreth edge detection
 def edgesMarrHildreth(img, sigma):
-	# st.image(img ,use_column_width = True)
-	# st.write(img.shape[0])
 	size = int(2*(np.ceil(3*sigma))+1)
 
 	x, y = np.meshgrid(np.arange(-size/2+1, size/2+1),
@@ -21,8 +25,6 @@ def edgesMarrHildreth(img, sigma):
 		np.exp(-(x**2+y**2) / (2.0*sigma**2)) / normal  # LoG filter
 
 	kern_size = kernel.shape[0]
-	# st.write(x)
-	# st.write(y)
 	log = np.zeros_like(img, dtype=float)
 
 	# applying filter
@@ -46,39 +48,34 @@ def edgesMarrHildreth(img, sigma):
 					zero_crossing[i][j] = 255
 	return sigma*2, zero_crossing
 
-img = cv2.imread('image3.jpg')
+
+# we pass our desired image to be processed
+img = cv2.imread('./input/image3.jpg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-# plt.imshow(cv2.cvtColor(gray, cv2.COLOR_BGR2RGB))
 
 bfilter = cv2.bilateralFilter(gray, 11, 17, 17) #Noise reduction
-edged = cv2.Canny(bfilter, 30, 200) #Edge detection
-# plt.imshow(cv2.cvtColor(edged, cv2.COLOR_BGR2RGB))
 
-# j = 0
-# folder_name = f"./output/test{j}"
-# if not os.path.exists(folder_name):
-# 	# Create the folder
-# 	os.makedirs(folder_name)
-# j += 1
-
-for i in np.arange(0.5, 3, 0.1):
+# we test over all sigma values until we get the extracted plates
+for i in np.arange(0.5, 3, 0.1): # use of np.arange for float stepping
 	fg_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 	gray2 = cv2.cvtColor(fg_rgb, cv2.COLOR_RGB2GRAY)
 	edged2 = edgesMarrHildreth(gray2, i)
+	log = edged2[1].astype(np.uint8)
 	# plt.imshow(cv2.cvtColor(edged, cv2.COLOR_BGR2RGB))
 	# plt.imshow(edged2[1], cmap='gray')
-	log = edged2[1].astype(np.uint8)
 	# print(edged)
 
 
+	# find contours
 	keypoints = cv2.findContours(log.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 	contours = imutils.grab_contours(keypoints)
 	contours = sorted(contours, key=cv2.contourArea, reverse=True)[:10]
-	# contours
+
 
 	location = None
 	found = 0
 	for contour in contours:
+		# we try to find a polygone with 4 vertices (quadrilateral)
 		approx = cv2.approxPolyDP(contour, 10, True)
 		# print(approx)
 		if len(approx) == 4:
@@ -89,10 +86,10 @@ for i in np.arange(0.5, 3, 0.1):
 	if found == 0:
 		pass
 	else:
+		#if found we extract our image and store it in in the output folder
 		mask = np.zeros(gray.shape, np.uint8)
 		new_image = cv2.drawContours(mask, [location], 0,255, -1)
 		new_image = cv2.bitwise_and(img, img, mask=mask)
-
 
 		(x,y) = np.where(mask==255)
 		(x1, y1) = (np.min(x), np.min(y))
