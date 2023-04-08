@@ -21,11 +21,6 @@
         Filliere :
     </strong>  IID2
 </div>
-<div style = "text-align:center">
-    <strong>
-        Encadre par : Pr.Ahmed Aghriche
-    </strong>
-</div>
 <div style="font-size:35px;font-weight:bold;text-align:center;">
     THE BEAUTY OF COMPUTER VISION
 </div>
