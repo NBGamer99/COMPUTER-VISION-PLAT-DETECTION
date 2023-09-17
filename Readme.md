@@ -27,8 +27,7 @@
 <br>
 <center>
 
-<img src="./assets/meme.png" alt="drawimemeng" width="400"/>
-
+  <img src="./assets/meme.png" alt="drawimemeng" width="400"/>
 </center>
 
 <!-- omit in toc -->
