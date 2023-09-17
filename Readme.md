@@ -25,10 +25,10 @@
 
 
 <br>
-<center>
+<div align="center">
 
   <img src="./assets/meme.png" alt="drawimemeng" width="400"/>
-</center>
+</div>
 
 <!-- omit in toc -->
 ## > Would it work on my machine ?
