@@ -131,7 +131,7 @@ The Mar-Hildreth code is done by **Afaf & Mouna**.
 This one is just straight forward, we try to use image processing and classification to detect objects from an already trained data.
 
 ## Scripts Showcase
-![](./assets/Showcase.gif)
+![](./assets/showcase.gif)
 
 <h2 id="contribute">Contributions</h2>
 
