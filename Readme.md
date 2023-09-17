@@ -1,36 +1,34 @@
-<div style="display:flex;justify-content:space-between">
-    <div>
-        <strong>
-            Realise par :
-        </strong>
-        <br>&nbsp;&nbsp;&nbsp;&nbsp;Yasser Nabouzi
-	    <br>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/ez7mz">Hamza Mesrar</a>
-    </div>
-    <div>
-        <div style="text-align:right;margin-left:-45px;">
-            2022-2023
-        </div>
-        <div>
-            <img src="assets\ensalogo.png" width ="90" style="margin-top:20px;margin-right:40px;float:right">
-        </div>
-    </div>
+<div align="center" id="top">
+  <a href="">
+    <img src="./assets/OpenCV_logo_no_text.png" alt="Logo" width="150px">
+  </a>
+
+  <h3 align="center">THE BEAUTY OF COMPUTER VISION
+</h3>
+
+  <p align="center">
+    Computer Vision Shenanigans ...
+    <br />
+    <br />
+    <a href="#contribute">Contribute</a>
+    ·
+    <a href="https://github.com/NBGamer99/VisionOrdinateur/issues">Report Bug</a>
+  </p>
+
+  ![License](https://camo.githubusercontent.com/3dbcfa4997505c80ef928681b291d33ecfac2dabf563eb742bb3e269a5af909c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f496c65726961796f2f6d61726b646f776e2d6261646765733f7374796c653d666f722d7468652d6261646765)
+  ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
+  ![OpenCV](https://img.shields.io/badge/OpenCV-27338e?style=for-the-badge&logo=OpenCV&logoColor=white)
+  ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
+
 </div>
-<br>
-<div style="position:relative;bottom:56px">
-    <strong>
-        Filliere :
-    </strong>  IID2
-</div>
-<div style="font-size:35px;font-weight:bold;text-align:center;">
-    THE BEAUTY OF COMPUTER VISION
-</div>
-<div style = "color:#66c2ff;text-align:center">
-Object Detection
-</div>
+
+
 
 <br>
 <center>
+
 <img src="./assets/meme.png" alt="drawimemeng" width="400"/>
+
 </center>
 
 <!-- omit in toc -->
@@ -114,7 +112,7 @@ $ pip install -r requirements.txt
 <!-- omit in toc -->
 ## 5. Congratulations new skill acquired 🥳
 
-<div style="color:white;"><a style="text-decoration: none !important;color:white;">https://www.youtube.com/watch?v=dQw4w9WgXcQ</a></div>
+<!-- <div style="color:white;"><a style="text-decoration: none !important;color:white;">https://www.youtube.com/watch?v=dQw4w9WgXcQ</a></div> -->
 Now you are a certified average python venv user.
 
 <!-- omit in toc -->
@@ -134,3 +132,26 @@ The Mar-Hildreth code is done by **Afaf & Mouna**.
 This one is just straight forward, we try to use image processing and classification to detect objects from an already trained data.
 
 
+
+
+<h2 id="contribute">Contributions</h2>
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+- Fork the repo
+- Create a new branch (`git checkout -b feature/AmazingFeature`)
+- Make your changes and add them (`git add .`)
+- Commit and push your changes (`git commit -m 'Add some AmazingFeature' && git push origin feature/AmazingFeature`)
+- Create a new pull request 🤩
+- And that's it 😊
+- Don't forget to star ⭐ the repo if you like it 😊
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## Contact Information
+
+- Devs : mesrarhamza48@gmail.com && ynabouzi.me@gmail.com
+---
+**Note:** The object detection algorithms are here to aid students and learners. Please use it responsibly, following your educational institution's rules and applicable regulations related to mathematical optimization and algorithms.
