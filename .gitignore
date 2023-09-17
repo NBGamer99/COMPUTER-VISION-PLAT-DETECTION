@@ -3,7 +3,6 @@ correc.*
 *.pdf
 *.zip
 *.tar
-*.gif
 
 # object files, link files and libraries
 *.o
