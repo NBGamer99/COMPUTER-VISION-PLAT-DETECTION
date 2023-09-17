@@ -1,12 +1,10 @@
 # importing Open-cv
 import cv2
-from matplotlib import pyplot as plt
 import numpy as np
+from matplotlib import pyplot as plt
 # imutils to make basic image processing functions such as translation, rotation, resizing
 import imutils
 import os
-# easyocr to read text from pictures
-import easyocr
 
 # we make the file working directory
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
@@ -15,14 +13,11 @@ os.chdir(os.path.dirname(os.path.realpath(__file__)))
 # Defining  Marr Hildreth edge detection
 def edgesMarrHildreth(img, sigma):
 	size = int(2*(np.ceil(3*sigma))+1)
-
-	x, y = np.meshgrid(np.arange(-size/2+1, size/2+1),
-					   np.arange(-size/2+1, size/2+1))
+	x, y = np.meshgrid(np.arange(-size/2+1, size/2+1), np.arange(-size/2+1, size/2+1))
 
 	normal = 1 / (2.0 * np.pi * sigma**2)
 
-	kernel = ((x**2 + y**2 - (2.0*sigma**2)) / sigma**4) * \
-		np.exp(-(x**2+y**2) / (2.0*sigma**2)) / normal  # LoG filter
+	kernel = ((x**2 + y**2 - (2.0*sigma**2)) / sigma**4) * np.exp(-(x**2+y**2) / (2.0*sigma**2)) / normal  # LoG filter
 
 	kern_size = kernel.shape[0]
 	log = np.zeros_like(img, dtype=float)
@@ -61,9 +56,8 @@ for i in np.arange(0.5, 3, 0.1): # use of np.arange for float stepping
 	gray2 = cv2.cvtColor(fg_rgb, cv2.COLOR_RGB2GRAY)
 	edged2 = edgesMarrHildreth(gray2, i)
 	log = edged2[1].astype(np.uint8)
-	# plt.imshow(cv2.cvtColor(edged, cv2.COLOR_BGR2RGB))
-	# plt.imshow(edged2[1], cmap='gray')
-	# print(edged)
+	plt.imshow(cv2.cvtColor(edged2, cv2.COLOR_BGR2RGB))
+	plt.imshow(edged2[1], cmap='gray')
 
 
 	# find contours
@@ -77,7 +71,6 @@ for i in np.arange(0.5, 3, 0.1): # use of np.arange for float stepping
 	for contour in contours:
 		# we try to find a polygone with 4 vertices (quadrilateral)
 		approx = cv2.approxPolyDP(contour, 10, True)
-		# print(approx)
 		if len(approx) == 4:
 			location = approx
 			found = 1
@@ -86,7 +79,7 @@ for i in np.arange(0.5, 3, 0.1): # use of np.arange for float stepping
 	if found == 0:
 		pass
 	else:
-		#if found we extract our image and store it in in the output folder
+		#if found, we extract our image and store it in in the output folder
 		mask = np.zeros(gray.shape, np.uint8)
 		new_image = cv2.drawContours(mask, [location], 0,255, -1)
 		new_image = cv2.bitwise_and(img, img, mask=mask)
